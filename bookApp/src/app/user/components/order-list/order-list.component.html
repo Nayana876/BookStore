@@ -1,0 +1,26 @@
+<div class="list-group">
+    <button type="button" class="list-group-item list-group-item-action" disabled>
+        <div class="row">
+            <span class="col-3">Date</span>
+            <span class="col-3">Total Price</span>
+            <span class="col-3">Order Status</span>
+            <span class="col-3">Number of Books</span>
+        </div>
+    </button>
+    <button type="button" (click)="order.Show=!order.Show;" [ngClass]="{'border-3':order.Show}" class=" list-group-item list-group-item-action"
+        *ngFor="let order of orders">
+        <div class="row">
+            <span class="col-3">{{order.OrderDate | date:'dd MMM yyyy'}}</span>
+            <span class="col-3">₹ {{order.OrderPrice}}</span>
+            <span class="col-3">{{order.OrderStatus}}</span>
+            <span class="col-3">{{totalBooks(order)}}</span>
+        </div>
+        <app-order-details [ngClass]="{'transition':true}" [hidden]="!order.Show" [order]="order"></app-order-details>
+        <!-- <app-order-details *ngIf="order.Show" [order]="order"></app-order-details> -->
+    </button>
+</div>
+
+<br>
+<br>
+
+<!-- <app-order-details *ngFor="let order of orders;" [order]="order"></app-order-details> -->

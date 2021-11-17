@@ -1,0 +1,52 @@
+<div class="container" style="padding: 10%;">
+    <form [formGroup]="editOrderForm" (ngSubmit)="editOrder()">
+        <div class="form-control">
+            <label for="UserId">User Id</label>
+            <input type="text"   class="form-control" id="UserId" formControlName="UserId"  >
+        </div>
+
+        <div class="form-control">
+            <label for="Order Id">Order Id</label>
+            <input type="text"   class="form-control" id="Order Id" formControlName="OrderId"  readonly >
+        </div>
+        <div class="form-control">
+            <label for="Order Price">Order Price</label>
+            <input type="text"   class="form-control" id="Order Price" formControlName="OrderPrice"   >
+        </div>
+        <div class="form-control">
+            <label for="Order Status">Order Status</label>
+            <input type="text"   class="form-control" id="Order Status" formControlName="OrderStatus" >
+        </div>
+        <div class="form-control">
+            <label for="Order Date">Order Date</label>
+            <input type="text"   class="form-control" id="Order Date" formControlName="OrderDate" >
+        </div>
+        <div class="form-control">
+            <label for="Cart Id">Cart ID</label>
+            <input type="text"   class="form-control" id="Cart Id" formControlName="CartId"  >
+        </div>
+        <div class="form-control">
+            <label for="Coupon">Coupon</label>
+            <input type="text"   class="form-control" id="Coupon" formControlName="Coupon" >
+        </div>
+        <div class="form-control">
+            <label for="Coins">Coins</label>
+            <input type="text"   class="form-control" id="Coins" formControlName="Coins"   >
+        </div>
+        
+
+        <button type="submit" [disabled]="editOrderForm.invalid" class="btn btn-primary">Save Changes</button>
+        <br>
+        <div  *ngIf="failedUpdate" class="alert alert-danger alert-dismissible fade show">
+            <strong>Error! </strong>{{errorMessage}}
+            
+        </div>
+
+        <div *ngIf="successUpdate" class="alert alert-success alert-dismissible fade show">
+            <strong>Success! </strong> Details have been updated.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    </form>
+
+</div>
+<!-- [disabled]="editOrderForm.invalid" -->

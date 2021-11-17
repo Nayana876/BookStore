@@ -1,0 +1,48 @@
+<form class="col-md-6 offset-md-3" [formGroup]="findUserForm" (ngSubmit)="onSubmit()">
+    <div class="form-group row mb-3">
+        <label class="col-sm-2 col-form-label" for="userName">UserName</label>
+        <div class="col-sm-10">
+
+            <input id="userName"  class="form-control" type="text" formControlName="userName"
+            >
+        </div>
+    </div>
+
+    
+    <div class="form-group">
+        <label>Email:</label>
+        <input type="email"  [class.is-invalid] = "findUserForm.get('email')?.errors?.email"  class="form-control" formControlName="email"  />
+      
+        <small class="text-danger" *ngIf="findUserForm.get('email')?.errors?.email">Email address is invalid</small>
+   
+    </div>
+    <br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" >Find User</button>
+    
+    <div  *ngIf="errorBox" class="alert alert-danger alert-dismissible fade show">
+        <strong>Error! </strong>{{errorMessage}}
+        
+    </div>
+
+</form>
+
+
+
+<div *ngIf="userFound" class="container">
+    <div class="alert alert-primary" role="alert">
+        
+        <div *ngFor="let item of userData | keyvalue">
+            <strong>{{item.key}} : </strong>{{item.value}}
+        </div>
+    </div>
+
+    <div *ngIf="userData.Status == 'active';then content else other_content">here is ignored</div>
+    <ng-template #content>
+        <button type="button" (click)="ChangeUserStatusById(userData, 'deactive')" class="btn btn-danger">Deactivate User</button>
+    </ng-template>
+    <ng-template #other_content>
+        <button type="button" (click)="ChangeUserStatusById(userData, 'active')" class="btn btn-success">Activate User</button>
+    </ng-template>
+    
+    
+</div>

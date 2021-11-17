@@ -1,0 +1,76 @@
+<div class="container">
+    
+    <app-search-panel (userEntireData)=handleTableDataRecieved($event) [controllerName]="thiController"></app-search-panel>
+    
+    <div class="table-responsive">
+        
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>Author</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Description</th>
+                    <th>Submitted By</th>
+                    <th>Condition</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of tableContent ">
+                    
+                    <td >
+                        {{item.Author}}
+                    </td> 
+                    <td >
+                        {{item.Title}}
+                    </td> 
+                    <td >
+                        {{item.ReviewStatus}}
+                    </td> 
+                    <td >
+                        {{item.Description}}
+                    </td> 
+                    <td >
+                        {{item.UserInfo?.UserName}}
+                    </td>
+                    <td >
+                        {{item.Condition}}
+                    </td>
+                    
+                    <td>
+                        <button class="btn  btn-warning" (click)="EditRow(item)" type="submit" >Edit</button>
+                        
+                        <button class="btn  btn-success" (click)="Approve(item)" type="submit" >Approve</button>
+                        
+                        
+                        
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Delete
+                        </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Do you want to Delete this Category?</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        This Category will be permanently Deleted!
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" (click)=Delete(item.BSId) data-bs-dismiss="modal" class="btn btn-primary">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

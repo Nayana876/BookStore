@@ -1,0 +1,28 @@
+<div class="container" style="padding: 10%;">
+    <form [formGroup]="editCouponForm" (ngSubmit)="editCoupon()">
+        <div class="form-group">
+            <label for="CouponId">Coupon Id</label>
+            <input type="text"   class="form-control" id="CId" formControlName="CouponId" >
+        </div>
+        
+        <div class="form-group">
+            <label for="DiscountPercentage">Discount Percentage</label>
+            <input type="number" class="form-control" id="DscntPer" formControlName="DiscountPercentage" >
+        </div>
+        <div class="form-group">
+            <label for="MaximumDiscount">MaximumDiscount</label>
+            <input type="number" class="form-control" id="MaxDscnt" formControlName="MaximumDiscount" >
+        </div>
+        <div class="form-group">
+            <label for="MinimumOrderPrice">MinimumOrderPrice</label>
+            <input type="number" class="form-control" id="MinimumOrderPrice" formControlName="MinimumOrderPrice" >
+        </div>
+        <div class="form-group">
+            <label for="Expiry">Expiry date</label>
+            <input type="date" class="form-control" id="Expiry" formControlName="Expiry" >
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" [disabled]="editCouponForm.invalid">Save Changes</button>
+    </form>
+
+</div>

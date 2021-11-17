@@ -1,0 +1,9 @@
+.hoverlist li :hover{
+    color:white;
+    background-color:chocolate;
+}
+
+.categorylist a:hover{
+    color:black;
+    background-color: wheat;
+}

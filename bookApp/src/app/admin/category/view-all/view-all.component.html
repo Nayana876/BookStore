@@ -1,0 +1,73 @@
+<div class="table-responsive">
+
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>Category Id</th>
+                <th>Category Name</th>
+                <th>Books Count</th>
+                <th>Category Description</th>
+                <th>Category Status</th>
+                <th>Category Position</th>
+                <th>Created At</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of tableContent ">
+              
+                <td >
+                    {{item.CategoryId}}
+                </td> 
+                <td >
+                    {{item.CName}}
+                </td> 
+                <td >
+                    {{item.BCount}}
+                </td> 
+                <td >
+                    {{item.CDescri}}
+                </td> 
+                <td >
+                    {{item.CStatus}}
+                </td>
+                <td >
+                    {{item.CPosition}}
+                </td>
+                <td >
+                    {{item.CreatedAt}}
+                </td>
+                
+                
+                <td>
+                    <button class="btn btn-lg btn-warning" routerLink="{{item.CategoryId}}" type="submit" >Edit</button>
+                    
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Delete
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Do you want to Delete this Category?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            This Category will be permanently Deleted!
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" (click)=Delete(item.CategoryId) data-bs-dismiss="modal" class="btn btn-primary">Delete</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>

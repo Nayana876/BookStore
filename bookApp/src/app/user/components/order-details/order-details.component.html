@@ -1,0 +1,41 @@
+<div class="container border border-2 rounded my-2">
+    <div>
+        Delivered to,
+        <p>
+            <strong>{{order.Address.Name}}</strong>
+            <br>
+            {{order.Address.Building}}, {{order.Address.Street}}, {{order.Address.City}}
+            <br>
+            {{order.Address.Pincode}}
+        </p>
+    </div>
+
+    <h5>Books</h5>
+    <table class="table table-striped border rounded">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cartItem of order.Cart.CartProducts; let i = index">
+                <td>{{cartItem.Book.Title}}</td>
+                <td>{{cartItem.Book.Author}}</td>
+                <td>{{cartItem.Quantity}}</td>
+                <td>{{cartItem.Quantity * cartItem.Book.Price}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class="row mb-2">
+        <div class="col-2"><span *ngIf="order.Coupon">Coupon Applied:</span></div>
+        <div class="col-2"><span *ngIf="order.Coupon"><strong>{{order.Coupon}}</strong></span></div>
+        <div class="col-4"></div>
+        <div class="col-2"><span *ngIf="order.Coins">Coins Used:</span></div>
+        <div class="col-2"><span *ngIf="order.Coins"><strong>{{order.Coins}}</strong></span></div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+<div class="container" style="padding: 5% 20% 0% 20%; background-color: gainsboro;">
+    <form class="well form-horizontal" [formGroup]="bookForm" enctype="multipart/form-data" (ngSubmit)="addBookFun()">
+
+        <div class="form-group">
+            <label >Title</label>
+            <input class="form-control" formControlName="Title">
+            <span class="text-danger"
+                *ngIf="(bookForm.controls['Title'].touched || submitted) && bookForm.controls['Title'].errors?.required">
+                Please enter a Title
+            </span>
+
+        </div>
+
+        <div class="form-group">
+            <label for="Title">Author</label>
+            <input class="form-control" formControlName="Author">
+            <span class="text-danger"
+                *ngIf="(bookForm.controls['Author'].touched || submitted) && bookForm.controls['Author'].errors?.required">
+                Please enter Author
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="CId">Category</label>
+            <select formControlName="CId" class="form-control">
+                <optgroup label="Choose a category">
+                    <option *ngFor="let cat of categories" [value]="cat.CategoryId">{{cat.CName}}</option>
+                </optgroup>
+            </select>
+            <span class="text-danger"
+                *ngIf="(bookForm.controls['CId'].touched || submitted) && bookForm.controls['CId'].errors?.required">
+                Please choose a category
+            </span>
+        </div>
+        <div class="form-group">
+            <label>ISBN</label>
+            <input class="form-control" formControlName="ISBN">
+            <span class="text-danger"
+                *ngIf="(bookForm.controls['ISBN'].touched || submitted) && bookForm.controls['ISBN'].errors">
+                Exceeded limit
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="Title">Year of publish</label>
+            <input class="form-control" formControlName="BookYear">
+            <span class="text-danger"
+                *ngIf="(bookForm.controls['BookYear'].touched || submitted) && bookForm.controls['BookYear'].errors">
+                Enter a valid year
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="Price">Price</label>
+            <input type='number' class="form-control" formControlName="Price" min="0">
+            <span class="text-danger"
+                *ngIf="(bookForm.controls['Price'].touched || submitted) && bookForm.controls['Price'].errors">
+                Enter a valid Price
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="Title">Availability</label>
+            <input type="number" class="form-control" formControlName="Quantity" min="1">
+            <span class="text-danger"
+                *ngIf="(bookForm.controls['Quantity'].touched || submitted) && bookForm.controls['Quantity'].errors">
+                Expected atleast 1 copy of the book
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="Title">Description</label>
+            <textarea class="form-control" formControlName="BDescri"></textarea>
+            <span class="text-danger"
+                *ngIf="(bookForm.controls['BDescri'].touched || submitted) && bookForm.controls['BDescri'].errors">
+                Exceeded the limit
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="condition">Condition</label>
+            <select formControlName="BCondition" class="form-control">
+                <option selected>New</option>
+                <option>Used</option>
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Title">Tags</label>
+            <textarea class="form-control" formControlName="BTags"></textarea>
+            <span class="text-danger"
+            *ngIf="(bookForm.controls['BTags'].touched || submitted) && bookForm.controls['BTags'].errors">
+            Exceeded the limit
+        </span>
+        </div>
+        <div class="form-group">
+            
+            <img [src]="imageUrl" style="width: 250px;height: 250px;">
+            <p></p>
+            <input type="file" (change)="handleImgUpl($event)">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="bookForm.invalid">Add Book</button>
+    </form>
+    <br>
+    <button class="btn btn-primary" routerLink="/book"> Go Back </button>
+</div>
+

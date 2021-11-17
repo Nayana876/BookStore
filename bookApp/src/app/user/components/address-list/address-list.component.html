@@ -1,0 +1,63 @@
+<div class="container row mt-3">
+
+  <div class="col-4" *ngFor="let address of addresses; let i = index">
+    <div class="card mx-1 my-2 " [ngClass]="{'border-3 border-secondary': selectedAddress == address.AId}">
+      <!-- <div class="card mx-1 my-2"  [ngClass]="{'text-white bg-primary': address.Selected}"> -->
+      <!-- <div class="card-header text-white bg-dark" *ngIf="selectedAddress == address.AId">Delivering here.</div> -->
+      <div class="card-body">
+        <h5 class="card-title">{{address.Name}}</h5>
+        <h6 class="card-subtitle mb-2">{{address.Building}}</h6>
+        <p class="card-text">
+          {{address.Street}}
+          <br>
+          {{address.City}}
+          <br>
+          {{address.Pincode}}
+          <br>
+          {{address.PhoneNo}}
+          <br>
+        </p>
+        <div class="row mx-1">
+          <button class="btn btn-secondary" (click)="selectAddress(address.AId)"
+            [disabled]="selectedAddress == address.AId">Deliver to this address</button>
+        </div>
+        <div class="row mt-1 mx-1">
+          <button class="btn btn-outline-secondary col-5" (click)="editAddress(address.AId)"  data-bs-toggle="modal" [attr.data-bs-target]="'#Modal'+address.AId">Edit</button>
+          <button class="btn btn-outline-secondary col-5 offset-2" (click)="deleteAddress(address.AId)">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" [id]="'Modal'+address.AId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Address</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <app-address-create [address]="address"></app-address-create>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="col-4">
+    <div class="card container mx-1 my-2 justify-content-center" style="height: 100%;">
+
+      <a routerLink="/user/address-create" class="btn btn-outline-secondary stretched-link">Add new address.</a>
+      <!-- <div class="card mx-1 my-2"  [ngClass]="{'text-white bg-primary': address.Selected}"> -->
+      <!-- <div class="card-header text-white bg-dark" *ngIf="selectedAddress == address.AId">Delivering here.</div> -->
+      <!-- <div class="card-body"> -->
+
+      <!-- </div> -->
+    </div>
+
+  </div>
+
+
+</div>

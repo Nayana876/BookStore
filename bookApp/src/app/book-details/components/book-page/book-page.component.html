@@ -1,0 +1,59 @@
+<div class="container-fluid main">
+    <div class="row col-sm-12 col-md-12">
+        <div class="col-lg-6 col-sm-12 col-xl-6 col-xs-12 col-md-12 container leftPanel">
+            <p></p>
+            <img class="imageDesign img-fluid" style="height: 400px;" alt="No Image"
+                src="https://localhost:44390/Images/{{book.BImgFile}}">
+            <br>
+            <button class="cart-btn btn-block" (click)="addToCartBtn(book.BookId)"><svg width="16" height="16" viewBox="0 0 16 15"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path class=""
+                        d="M15.32 2.405H4.887C3 2.405 2.46.805 2.46.805L2.257.21C2.208.085 2.083 0 1.946 0H.336C.1 0-.064.24.024.46l.644 1.945L3.11 9.767c.047.137.175.23.32.23h8.418l-.493 1.958H3.768l.002.003c-.017 0-.033-.003-.05-.003-1.06 0-1.92.86-1.92 1.92s.86 1.92 1.92 1.92c.99 0 1.805-.75 1.91-1.712l5.55.076c.12.922.91 1.636 1.867 1.636 1.04 0 1.885-.844 1.885-1.885 0-.866-.584-1.593-1.38-1.814l2.423-8.832c.12-.433-.206-.86-.655-.86"
+                        fill="#fff"></path>
+                </svg>&nbsp; ADD TO CART
+            </button>
+            <p></p>
+            <button class="cart-btn  btn-block" (click)="addToWishlistBtn(book.BookId)">WISHLIST</button>
+        </div>
+        <div class="col-lg-6 col-sm-12 col-xl-6 col-xs-12  col-md-12 container-fluid mainPanel">
+            <br>
+            <!-- <h1>{{book.BookId}}</h1> -->
+            <h1>{{book.Title}}</h1>
+            <h5>( by {{book['Author']}} )</h5>
+            <p style="font-style: italic;">{{book['BCondition']}}</p>
+            <div class="Rating"> {{book.BRating}} ☆ </div>
+            <br>
+            <hr>
+            <h4>About Book</h4>
+            <p>{{book['BDescri']}}</p>
+            <p>Tags : {{book.BTags}}</p>
+            <hr style="border-top: 0.2px solid;">
+            <br>
+            <div class="container-fluid">
+                <h3 style="text-align: center; ">Customer Review</h3>
+                <button class="Rating" style="float: right;" (click)="clicked=!clicked;">Add a review</button>
+                <div class="container" style="padding: 10px;">
+                    <app-add-review (onSubmit)="clicked=!($event);this.ngOnInit()" [hidden]="!clicked"></app-add-review>
+                </div>
+                <br>
+                <div *ngFor="let review of reviewList" style="display: block;">
+                    <div class="container-fluid">
+                        <div class="Rating"> {{review.Rating}}☆ </div>
+                        <div style="background-color: white; color: black;" class="Rating">
+                            <p style="float: left; font-style: italic;">Reviewed by &nbsp; </p>
+                            {{review.UserInfo.FName}} {{review.UserInfo.LName}}
+                        </div>
+                        <p style=" font-style:italic;font-size: small">Reviwed on {{review.SubmittedAt.substring(0,10)}}
+                        </p>
+                        <p>{{review.Review1}}</p>
+                        <hr>
+                        <br>
+                    </div>
+                    <br>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

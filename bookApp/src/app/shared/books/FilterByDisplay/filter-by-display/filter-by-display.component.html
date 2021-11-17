@@ -1,0 +1,55 @@
+
+<div class="container-fluid" *ngIf="!NoMatchDisplay"
+style="background-color: rgba(0, 0, 0, 0.05);text-align:center;height:43px;padding:10px;margin-bottom:43px;margin-top: 0px;">
+<div class="row">
+    <a class="text-decoration-none text-reset fw-bold" style="color: black;" id="categorybooks"
+        aria-label="Category books"> Your search results are ready here!</a>
+    
+</div>
+</div>
+
+
+
+
+<!--Card Display of Books-->
+
+<div class="container-fluid" *ngIf="!NoMatchDisplay" style="margin-bottom: 43px;">
+	<div class="row" style="margin:0px">
+		<div class="card col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let book of FilteredBooks"
+			style="align-items: center;padding:10px;background-color:whitesmoke;;border-color: darksalmon;">
+			<img src="https://localhost:44390/Images/{{book.BImgFile}}"
+				class="card-img-top" style="width: 88%;height: 60%;" />
+			<div class="card-body">
+				<h5 class="card-title">{{book.Title}}
+					<h6><i>by {{book.Author}}</i></h6>
+				</h5>
+			
+				<a href="#" style="color:darkorchid;color:rgb(161, 142, 94);" routerLink="/book-details/{{book.BookId}}">Explore the book
+				</a>
+				<br>
+				<div>
+					<br>
+					<button href="#" class="btn" style="background-color:orange;" routerLink="/home">WishList</button>
+
+					<button style="margin-left: 50px;" href="#" class="btn btn-primary">Add to Cart</button>
+					
+					<h6>Price: Rs{{book.Price}}</h6>
+				</div>
+				<br>
+			
+				
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class= "container-fluid" *ngIf="NoMatchDisplay">
+	<div class="row col-12 text-align" style="text-align: center; color:brown;margin-top: 45px;margin-bottom: 45px;">
+		<h5 style="color:rgba(247, 204, 204, 0.301)">OO...ps!!</h5>
+		<img class ="img-responsive  center"src="\assets\UImages\minionNotfound.jpg" style="height:200px;width:200px;margin-left: 41%;">
+		<h5 *ngIf="NoBookorError">No matches found in filter <i>{{filter}} </i>for search word <i>{{searchText}}</i></h5>
+	    <h5 *ngIf="!NoBookorError">Choose appropriate filter or enter a search text</h5>
+	</div>
+</div>
+

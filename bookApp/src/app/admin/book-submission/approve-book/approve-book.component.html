@@ -1,0 +1,139 @@
+<form *ngIf=allDataRecieved class="col-md-6 offset-md-3" [formGroup]="addBookForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text"  [class.is-invalid] = "addBookForm.get('Title')?.invalid && addBookForm.get('Title')?.touched"  class="form-control" formControlName="Title"  />
+        <div *ngIf="(addBookForm.get('Title')?.invalid && addBookForm.get('Title')?.touched) || addBookForm.get('Title')?.dirty">
+        <small class="text-danger" *ngIf="addBookForm.get('Title')?.errors?.required">Title is Required</small>  
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Author</label>
+        <input type="text"  [class.is-invalid] = "addBookForm.get('Author')?.invalid && addBookForm.get('Author')?.touched"  class="form-control" formControlName="Author"  />
+        <div *ngIf="(addBookForm.get('Author')?.invalid && addBookForm.get('Author')?.touched) || addBookForm.get('Author')?.dirty">
+        <small class="text-danger" *ngIf="addBookForm.get('Author')?.errors?.required">Author Name is Required</small>  
+        </div>
+    </div>
+
+    
+    <br>
+    <div class="form-group">
+        <label >Book Category   </label>
+        <select formControlName="CId">
+            <option *ngFor="let category of Available_categories" [ngValue]="category.CategoryId">
+              {{ category.CName }}
+            </option>
+          </select>
+          <div *ngIf="(addBookForm.get('CId')?.invalid && addBookForm.get('CId')?.touched) || addBookForm.get('CId')?.dirty">
+            <small class="text-danger" *ngIf="addBookForm.get('CId')?.errors?.required">Category is Required</small>  
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>ISBN</label>
+        <input type="text"  [class.is-invalid] = "addBookForm.get('ISBN')?.invalid && addBookForm.get('ISBN')?.touched"  class="form-control" formControlName="ISBN"  />
+        <div *ngIf="(addBookForm.get('ISBN')?.invalid && addBookForm.get('ISBN')?.touched) || addBookForm.get('ISBN')?.dirty">
+        <small class="text-danger" *ngIf="addBookForm.get('ISBN')?.errors?.required">ISBN is Required</small>  
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>BookYear</label>
+        <input type="text"  [class.is-invalid] = "addBookForm.get('BookYear')?.invalid && addBookForm.get('BookYear')?.touched"  class="form-control" formControlName="BookYear"  />
+        <div *ngIf="(addBookForm.get('BookYear')?.invalid && addBookForm.get('BookYear')?.touched) || addBookForm.get('BookYear')?.dirty">
+        <small class="text-danger" *ngIf="addBookForm.get('BookYear')?.errors?.required">BookYear is Required</small>  
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Book Rating</label>
+        <input type="text"  [class.is-invalid] = "addBookForm.get('BRating')?.invalid && addBookForm.get('BRating')?.touched"  class="form-control" formControlName="BRating"  />
+        <div *ngIf="(addBookForm.get('BRating')?.invalid && addBookForm.get('BRating')?.touched) || addBookForm.get('BRating')?.dirty">
+        <small class="text-danger" *ngIf="addBookForm.get('BRating')?.errors?.required">Book Rating is Required</small> 
+        <small class="text-danger" *ngIf="addBookForm.get('BRating')?.errors?.pattern">Book Rating should be 0-5</small>  
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Quantity</label>
+        <input type="text"  [class.is-invalid] = "addBookForm.get('Quantity')?.invalid && addBookForm.get('Quantity')?.touched"  class="form-control" formControlName="Quantity"  />
+        <div *ngIf="(addBookForm.get('Quantity')?.invalid && addBookForm.get('BRating')?.touched) || addBookForm.get('Quantity')?.dirty">
+        <small class="text-danger" *ngIf="addBookForm.get('Quantity')?.errors?.required">Quantity is Required</small> 
+        <small class="text-danger" *ngIf="addBookForm.get('Quantity')?.errors?.pattern">Quantity should be a whole Number</small>  
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Price</label>
+        <input type="text"  [class.is-invalid] = "addBookForm.get('Price')?.invalid && addBookForm.get('Price')?.touched"  class="form-control" formControlName="Price"  />
+        <div *ngIf="(addBookForm.get('Price')?.invalid && addBookForm.get('BRating')?.touched) || addBookForm.get('Price')?.dirty">
+        <small class="text-danger" *ngIf="addBookForm.get('Price')?.errors?.required">Price is Required</small> 
+        <small class="text-danger" *ngIf="addBookForm.get('Price')?.errors?.pattern">Price should be a whole Number</small>  
+        </div>
+    </div>
+
+    
+    <div class="form-group">
+        <label>Description</label>
+        <input type="text"  [class.is-invalid] = "addBookForm.get('BDescri')?.invalid && addBookForm.get('BDescri')?.touched"  class="form-control" formControlName="BDescri"  />
+        <div *ngIf="(addBookForm.get('BDescri')?.invalid && addBookForm.get('BDescri')?.touched) || addBookForm.get('BDescri')?.dirty">
+        <small class="text-danger" *ngIf="addBookForm.get('BDescri')?.errors?.required">Description is Required</small>  
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Book Position</label>
+        <input type="text"  [class.is-invalid] = "addBookForm.get('BPosition')?.invalid && addBookForm.get('BPosition')?.touched"  class="form-control" formControlName="BPosition"  />
+        <div *ngIf="(addBookForm.get('BPosition')?.invalid && addBookForm.get('BRating')?.touched) || addBookForm.get('BPosition')?.dirty">
+        <small class="text-danger" *ngIf="addBookForm.get('BPosition')?.errors?.required">Book Position is Required</small> 
+        <small class="text-danger" *ngIf="addBookForm.get('BPosition')?.errors?.pattern">Book Position should be a whole Number</small>  
+        </div>
+    </div>
+
+    <br>
+    <div class="form-group">
+        <label >Book Status   </label>
+        <select formControlName="BStatus">
+            <option *ngFor="let status of StatusOptions" [ngValue]="status">
+              {{ status }}
+            </option>
+          </select>
+          <div *ngIf="(addBookForm.get('BStatus')?.invalid && addBookForm.get('BStatus')?.touched) || addBookForm.get('BStatus')?.dirty">
+            <small class="text-danger" *ngIf="addBookForm.get('BStatus')?.errors?.required">Status is Required</small>  
+        </div>
+    </div>
+
+    <br>
+    <div class="form-group">
+        <label >Book Condition   </label>
+        <select formControlName="BCondition">
+            <option *ngFor="let cond of BookConditions" [ngValue]="cond">
+              {{ cond }}
+            </option>
+          </select>
+          <div *ngIf="(addBookForm.get('BCondition')?.invalid && addBookForm.get('BCondition')?.touched) || addBookForm.get('BCondition')?.dirty">
+            <small class="text-danger" *ngIf="addBookForm.get('BCondition')?.errors?.required">Book Condition is Required</small>  
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Tags</label>
+        <input type="text"   class="form-control" formControlName="BTags"  />
+        
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="!addBookForm.valid"  type="submit" >Submit</button>
+
+    <div  *ngIf="failedUpdate" class="alert alert-danger alert-dismissible fade show">
+        <strong>Error! </strong>{{errorMessage}}
+        
+    </div>
+
+            
+    <div *ngIf="successUpdate" class="alert alert-success alert-dismissible fade show">
+        <strong>Success! </strong>Book Approved and Added  successfully.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+</form>

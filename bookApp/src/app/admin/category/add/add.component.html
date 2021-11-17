@@ -1,0 +1,66 @@
+<form class="col-md-6 offset-md-3" [formGroup]="addCategoryForm" (ngSubmit)="onSubmit()">
+    
+    <div class="form-group">
+        <label>Category Name</label>
+        <input type="text"  [class.is-invalid] = "addCategoryForm.get('CName')?.invalid && addCategoryForm.get('CName')?.touched"  class="form-control" formControlName="CName"  />
+        <div *ngIf="(addCategoryForm.get('CName')?.invalid && addCategoryForm.get('CName')?.touched) || addCategoryForm.get('CName')?.dirty">
+        <small class="text-danger" *ngIf="addCategoryForm.get('CName')?.errors?.required">Category Name is Required</small>  
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <label>Count of Books</label>
+        <input type="text"  [class.is-invalid] = "addCategoryForm.get('BCount')?.invalid && addCategoryForm.get('BCount')?.touched"  class="form-control" formControlName="BCount"  />
+        <div *ngIf="(addCategoryForm.get('BCount')?.invalid && addCategoryForm.get('BCount')?.touched) || addCategoryForm.get('BCount')?.dirty">
+        <small class="text-danger" *ngIf="addCategoryForm.get('BCount')?.errors?.required">Minimum accepted value = 0 </small>  
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <label>Category Description</label>
+        <input type="text"  [class.is-invalid] = "addCategoryForm.get('CDescri')?.invalid && addCategoryForm.get('CDescri')?.touched"  class="form-control" formControlName="CDescri"  />
+       
+    </div>
+    <br>
+    <br>
+    <div class="form-group">
+        <label>Category Status</label>
+        <select formControlName="CStatus">
+            <option *ngFor="let status of StatusOptions" [ngValue]="status">
+              {{ status }}
+            </option>
+          </select>
+    </div>
+    <br>
+    <div class="form-group">
+        <label>Category Position</label>
+        <input type="text"  [class.is-invalid] = "addCategoryForm.get('CPosition')?.invalid && addCategoryForm.get('CPosition')?.touched"  class="form-control" formControlName="CPosition"  />
+        <div *ngIf="(addCategoryForm.get('CPosition')?.invalid && addCategoryForm.get('CPosition')?.touched) || addCategoryForm.get('CPosition')?.dirty">
+        <small class="text-danger" *ngIf="addCategoryForm.get('CPosition')?.errors?.required">Category Name is Required</small>  
+        <small class="text-danger" *ngIf="addCategoryForm.get('CPosition')?.errors?.pattern">Invalid Format</small>      
+    </div>
+    </div>
+
+    <div class="form-group">
+        <label>Creation Date</label>
+        <input type="text"  [class.is-invalid] = "addCategoryForm.get('CreatedAt')?.invalid && addCategoryForm.get('CreatedAt')?.touched"  class="form-control" formControlName="CreatedAt"  />
+        <div *ngIf="(addCategoryForm.get('CreatedAt')?.invalid && addCategoryForm.get('CreatedAt')?.touched) || addCategoryForm.get('CreatedAt')?.dirty">
+        <small class="text-danger" *ngIf="addCategoryForm.get('CreatedAt')?.errors?.required">Date Is required</small>  
+        <small class="text-danger" *ngIf="addCategoryForm.get('CreatedAt')?.errors?.pattern">Invalid Format : Use -> mm/dd/yyy</small>      
+    </div>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="!addCategoryForm.valid"  type="submit" >Submit</button>
+
+    <div  *ngIf="failedSignIn" class="alert alert-danger alert-dismissible fade show">
+        <strong>Error! </strong>{{errorMessage}}
+        
+    </div>
+
+            
+    <div *ngIf="successSignIn" class="alert alert-success alert-dismissible fade show">
+        <strong>Success! </strong>Category Added successfully.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+</form>

@@ -1,0 +1,34 @@
+<!-- <button id="btn" (click)="allBooks()">Get Data</button> -->
+<div class="container" style="padding: 5%;">
+    <h1 style="text-align: center;">Books</h1>
+    <br>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Ranking</th>                
+                <th>Title</th>
+                <th>Category</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let book of books; let i=index;">
+                <td>{{ i+1 }}</td>                
+                <td>{{ book.Title }}</td>
+                <td>{{book.Category['CName']}}</td>
+                <td>{{ book.Author }}</td>
+                <td>{{ book.Price }}</td>
+                <td>
+                    <button class="btn btn-primary" routerLink="/book-details/{{book.BookId}}">Book Details</button>
+                    <button class="btn btn-warning" routerLink="/book/{{book.BookId}}"> View & Edit </button>
+                    <button class="btn btn-danger" (click)="deleteBook(book.BookId)"> Delete </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+ 
+    <button class="btn btn-warning" routerLink="/book/add">Add New Book</button>
+
+</div>

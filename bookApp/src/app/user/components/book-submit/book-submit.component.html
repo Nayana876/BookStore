@@ -1,0 +1,47 @@
+<form class="col-md-6 offset-md-3" [formGroup]="addCategoryForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+        <label>Author</label>
+        <input type="text"  [class.is-invalid] = "addCategoryForm.get('Author')?.invalid && addCategoryForm.get('Author')?.touched"  class="form-control" formControlName="Author"  />
+        <div *ngIf="(addCategoryForm.get('Author')?.invalid && addCategoryForm.get('Author')?.touched) || addCategoryForm.get('Author')?.dirty">
+        <small class="text-danger" *ngIf="addCategoryForm.get('Author')?.errors?.required">Author Name is Required</small>  
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text"  [class.is-invalid] = "addCategoryForm.get('Title')?.invalid && addCategoryForm.get('Title')?.touched"  class="form-control" formControlName="Title"  />
+        <div *ngIf="(addCategoryForm.get('Title')?.invalid && addCategoryForm.get('Title')?.touched) || addCategoryForm.get('Title')?.dirty">
+        <small class="text-danger" *ngIf="addCategoryForm.get('Title')?.errors?.required">Title is Required</small>  
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Description</label>
+        <input type="text"  [class.is-invalid] = "addCategoryForm.get('Description')?.invalid && addCategoryForm.get('Description')?.touched"  class="form-control" formControlName="Description"  />
+        <div *ngIf="(addCategoryForm.get('Description')?.invalid && addCategoryForm.get('Description')?.touched) || addCategoryForm.get('Description')?.dirty">
+        <small class="text-danger" *ngIf="addCategoryForm.get('Description')?.errors?.required">Description is Required</small>  
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Condition</label>
+        <input type="text"  [class.is-invalid] = "addCategoryForm.get('Condition')?.invalid && addCategoryForm.get('Condition')?.touched"  class="form-control" formControlName="Condition"  />
+        <div *ngIf="(addCategoryForm.get('Condition')?.invalid && addCategoryForm.get('Condition')?.touched) || addCategoryForm.get('Condition')?.dirty">
+        <small class="text-danger" *ngIf="addCategoryForm.get('Condition')?.errors?.required">Condition is Required</small>  
+        </div>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="!addCategoryForm.valid"  type="submit" >Submit</button>
+
+    <div  *ngIf="failedUpdate" class="alert alert-danger alert-dismissible fade show">
+        <strong>Error! </strong>{{errorMessage}}
+        
+    </div>
+
+            
+    <div *ngIf="successUpdate" class="alert alert-success alert-dismissible fade show">
+        <strong>Success! </strong>Book Submission Edited successfully.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+</form>

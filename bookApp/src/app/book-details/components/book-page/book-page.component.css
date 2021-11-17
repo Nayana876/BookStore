@@ -1,0 +1,50 @@
+
+div {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+p{
+  text-align: justify;
+}
+.main{
+  padding-top: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.mainPanel{
+padding-right: 50px;
+padding-top: 30px;
+}
+.leftPanel{
+   padding-left: 150px;
+}
+.cart-btn {
+    padding: 8px 8px;
+    border-radius: 8px;
+    max-width: 250px;
+    float:center;
+    background: rgb(8, 131, 168);
+    color:white; 
+}
+.imageDesign{
+    border:solid 2px black;
+    width: 250px;
+    
+}
+.Rating{
+  background-color: #26a541;
+  border-radius: 12px;
+  font: 12px;
+  color: white;
+  padding: 3px 7px;
+  margin: 0 10px 0 0;
+  /* float: left; */
+  
+}
+.review-btn{
+  padding: 10px;
+  margin: 10px;
+  float: right;
+  border-radius: 10px;
+}

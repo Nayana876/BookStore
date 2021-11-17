@@ -1,0 +1,52 @@
+<div class="container" style="padding: 10%;">
+    <form [formGroup]="addCouponForm" (ngSubmit)="addCoupon()">
+        <div class="form-group">
+            <label for="CouponId">Coupon Id</label>
+            <input type="text" class="form-control" id="CouponId" formControlName='CouponId'
+                placeholder="Enter Coupon Id">
+            <span class="text-danger"
+                *ngIf="(addCouponForm.controls['CouponId'].touched || submitted) && addCouponForm.controls['CouponId'].errors">
+                This is a required field
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="DiscountPercentage">Discount Percentage</label>
+            <input type="number" min="1" class="form-control" id="DiscountPercentage"
+                formControlName='DiscountPercentage' placeholder="Enter Discount Percentage">
+            <span class="text-danger"
+                *ngIf="( submitted) && addCouponForm.controls['DiscountPercentage'].errors?.required">
+                This field is required
+            </span>
+            <span class="text-danger" *ngIf="( submitted) && addCouponForm.controls['DiscountPercentage'].errors?.min">
+                Enter valid discount percentage
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="MaximumDiscount">MaximumDiscount</label>
+            <input type="number" min="0" class="form-control" id="MaximumDiscount" formControlName="MaximumDiscount"
+                placeholder="Enter Maximum Discount">
+            <span class="text-danger" *ngIf="( submitted) && addCouponForm.controls['MaximumDiscount'].errors?.min">
+                Enter a valid number
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="MinimumOrderPrice">MinimumOrderPrice</label>
+            <input type="number" min="0" class="form-control" id="MinimumOrderPrice" formControlName="MinimumOrderPrice"
+                placeholder="Enter Minimum Order Price">
+            <span class="text-danger" *ngIf="( submitted) && addCouponForm.controls['MinimumOrderPrice'].errors?.min">
+                Enter a valid number
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="Expiry">Expiry date</label>
+            <input type="date" class="form-control" id="Expiry" formControlName="Expiry"
+                placeholder="Enter Expiry date">
+            <span class="text-danger"
+                *ngIf="( submitted) && addCouponForm.controls['Expiry'].errors?.required">
+                This field is required
+            </span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>

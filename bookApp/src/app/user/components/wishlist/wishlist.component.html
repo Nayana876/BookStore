@@ -1,0 +1,32 @@
+<div class="container my-3">
+
+  <h2>WishList</h2>
+  <div class="card">
+    <div class="card-body">
+
+      <table class="table">
+
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let wish of wishlist">
+            <td>{{wish.Book.Title}}</td>
+            <td>{{wish.Book.Author}}</td>
+            <td>{{wish.Book.Price}}</td>
+            <td style="width: 300px;">
+              <button class="btn btn-secondary" (click)="addBookToCart(wish.Book.BookId, wish.WId)">Add to Cart</button>
+              <button class="mx-1 btn btn-outline-secondary" (click)="removeBtnClick(wish.WId)">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<!-- <button id="btn" (click)="allBooks()">Get Data</button> -->
+<div class="container" style="padding: 5%;">
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>Book Title</th>
+                <th>Rating</th>
+                <th>Review</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let review of reviews; let i=index;">
+                <td>{{ i+1 }}</td>
+                <td>{{ review.Book.Title }}</td>
+                <td>{{review.Rating}}</td>
+                <td>{{ review.Review1 }}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteReview(review.ReviewId)"> Delete </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

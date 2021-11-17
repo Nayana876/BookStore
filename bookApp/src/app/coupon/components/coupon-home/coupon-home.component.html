@@ -1,0 +1,30 @@
+<div class="container" style="padding: 5%;">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Coupon Id</th>
+                <th>Discount Percentage</th>
+                <th>Maximum Discount</th>
+                <th>Minimum Order Price</th>
+                <th>Expiry</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let coupon of coupons">
+                <td>{{ coupon.CouponId }}</td>
+                <td>{{ coupon.DiscountPercentage }}</td>
+                <td>{{ coupon.MaximumDiscount }}</td>
+                <td>{{ coupon.MinimumOrderPrice }}</td>
+                <td>{{coupon.Expiry.substring(0,10)}}</td>
+                <td>                   
+                    <button class="btn btn-warning" routerLink="/coupon/{{coupon.CouponId}}">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteCoupon(coupon.CouponId)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <button class="btn btn-warning" routerLink="/coupon/add">Add New Coupon</button>
+
+</div>

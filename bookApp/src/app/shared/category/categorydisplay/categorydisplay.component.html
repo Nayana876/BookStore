@@ -1,0 +1,78 @@
+<!--
+ <p>categorydisplay {{CurrCategory}} works!</p>
+
+<p>{{catDataSingle[0].Books[0].Title}}</p>
+<p>{{catDataSingle[0].Books[1].Title}}</p>
+<p>{{catDataSingle[0].Books.length}}</p>
+<div class="container-fluid">  
+    <table>
+        <tr>
+          <th>Category Name</th>
+          
+          <th>Category Description</th>
+          <th>Category Id</th>
+          <th>Book Id</th>
+          <th>Book Title</th>
+        </tr>
+      <tr *ngFor="let b of catDataSingle">               
+        <h6 *ngFor="let k of b.Books">  
+            <td>{{b.CName}}</td>
+            <td>{{b.CDescri}}</td>
+            <td>{{b.CategoryId}}</td>
+            
+            <td>{{k.BookId}}</td>
+            <td>{{k.Title}}</td>
+            <td>{{k.Author}}</td>
+        </h6> 
+        </tr>
+      </table>
+    
+</div>
+-->
+
+
+
+<div class="container-fluid"
+	style="background-color: rgba(0, 0, 0, 0.05);text-align:center;height:43px;padding:10px;margin-bottom:43px;margin-top: 0px;">
+	<div class="row">
+		<a class="text-decoration-none text-reset fw-bold" style="color: black;" id="categorybooks"
+			aria-label="Category books"> Most Exciting collections of {{CurrCategory}} for your Reading
+			World!</a>
+
+	</div>
+</div>
+<!--card display of books-->
+
+<div class="container-fluid">
+	<div class="row" *ngFor="let b of catDataSingle">
+		<div class="card  col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let k of b.Books"
+			style="align-items:center;padding:10px;background-color:whitesmoke;border-color: darksalmon;">
+			<img src="https://localhost:44390/Images/{{k.BImgFile}}"
+				class="card-img-top" style="width: 88%;height: 60%;" />
+			<div class="card-body">
+				<h5 class="card-title">{{k.Title}}
+					<h6><i>by {{k.Author}}</i></h6>
+				</h5>
+		<!--		<p class="card-text">
+					{{k.BDescri}}
+				</p>	    -->		
+				<a href="#" style="color:darkorchid;color:rgb(161, 142, 94);" routerLink="/book-details/{{k.BookId}}">Explore the book
+				</a>
+				<br>
+				<div>
+					<br>
+					<button href="#" class="btn" style="background-color:orange;" routerLink="/home">WishList</button>
+
+					<button style="margin-left: 50px;" href="#" class="btn btn-primary" (Click)="AddtoCart()">Add to
+						Cart</button>
+					
+					<h6>Price: Rs{{k.Price}}</h6>
+				</div>
+				<br>
+			<!--	<p>Tags : {{k.BTags}}</p>                -->
+				
+			</div>
+		</div>
+
+	</div>
+</div>

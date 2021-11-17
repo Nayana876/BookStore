@@ -1,0 +1,92 @@
+
+<div class="container">
+
+    <app-search-panel (userEntireData)=handleTableDataRecieved($event) [controllerName]="thiController"></app-search-panel>
+    
+    <div class="table-responsive">
+        
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email </th>
+                    <th>Order Date</th>
+                    <th>OrderId</th>
+                    <th>OrderPrice</th>
+                    <th>OrderStatus</th>
+                    <th>CartId</th>
+                    <th>Coupon</th>
+                    <th>Coins</th>
+                    <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of tableContent ">
+                <!-- <td *ngFor="let content of  item.value | keyvalue">
+                    {{content.key}}
+                </td>  -->
+                <td >
+                    {{item.UserInfo?.FName}}
+                </td> 
+                <td >
+                    {{item.UserInfo?.LName}}
+                </td> 
+                <td >
+                    {{item.UserInfo?.Email}}
+                </td> 
+                <td >
+                    {{item.OrderDate}}
+                </td> 
+                <td >
+                    {{item.OrderId}}
+                </td>
+                <td >
+                    {{item.OrderPrice}}
+                </td>
+                <td >
+                    {{item.OrderStatus}}
+                </td>
+                
+                <td >
+                    {{item.CartId}}
+                </td> 
+                <td >
+                    {{item.Coupon}}
+                </td> 
+                <td >
+                    {{item.Coins}}
+                </td> 
+                <td>
+                    <button class="btn btn-lg btn-warning" routerLink="{{item.OrderId}}" type="submit" >Edit</button>
+                    <!-- <button class="btn btn-warning" routerLink="/coupon/{{coupon.CouponId}}">Edit</button> -->
+                    
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Delete
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Do you want to Delete this Order?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    This Order Data will be permanently Deleted!
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" (click)=Delete(item) data-bs-dismiss="modal" class="btn btn-primary">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>

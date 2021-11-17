@@ -1,0 +1,32 @@
+<div class="container" style="padding: 10%; background-color: rgb(221, 216, 216);">
+    <form [formGroup]="reviewForm" (ngSubmit)="addReview()">
+
+        <div class="form-group">
+            <label for="Rating">Rating</label>
+            <input type="number" min="0" max="5" class="form-control" formControlName='Rating'>
+            <span class="text-danger"
+                *ngIf="(reviewForm.controls['Review1'].touched || submitted) && reviewForm.controls['Rating'].errors">
+                Please provide a rating
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="Review">Review</label>
+            <input class="form-control" formControlName='Review1'>
+            <!-- <span class="text-danger"
+                *ngIf="(reviewForm.controls['Review1'].touched || submitted) ">
+                Review too long..!
+            </span> -->
+        </div>
+        <button type="submit" class="btn btn-primary"
+            [disabled]="(reviewForm.controls['Review1'].value=='' && reviewForm.controls['Rating'].value==0) ">Submit</button>
+        <span style="padding: 10px;">
+            <span class="p-3 mb-2 text-danger" [hidden]="!submitted" *ngIf="error">Error..!</span>
+            <span class="p-3 mb-2 text-success" [hidden]="!submitted" *ngIf="!error">
+                Succesfully Added..!!
+            </span>
+        </span>
+
+
+    </form>
+
+</div>

@@ -1,0 +1,52 @@
+<div class="container-fluid col-xl-10" style="margin:auto" >
+<!--	<div *ngFor="let test of threeData" class="" >    -->
+    <div class="row" >
+		<div *ngFor="let test of threeData" style="background-color: wheat;margin:auto" class="card col-3">
+			<div class="card-body text-center">
+				<p class="card-text">{{test.Review}}</p>
+				<h6 class="card-title">-- {{test.Name}}</h6>
+			</div>
+		</div>
+
+    </div>
+	<!--</div>-->
+</div>
+
+
+<div style="margin-bottom:40px;"></div>
+
+<h6 (click)="ShowForm()" style="text-decoration: underline;cursor: pointer;">Leave a comment </h6>
+<!--form for testimonial-->
+
+
+<div *ngIf="show" class="container-fluid col-12 col-md-6" style="padding: 10%; background-color: rgb(248, 200, 156);margin:auto">
+<h5>What do you feel about our services?</h5>
+    <form [formGroup]="testimonialForm" (ngSubmit)="addTestimonial()">
+        <div class="form-group">
+
+            <label for="Name">Full Name</label>
+
+            <input type="text" class="form-control" formControlName='Name'>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="Comments">Drop your comments here...</label>
+
+            <input type="text" class="form-control" formControlName='Review'>
+
+        </div>
+
+        <button type="submit"  class="btn btn-primary">Submit</button>
+        <br>
+    <span style="padding: 10px;">
+
+                <span class="p-3 mb-2 text-danger" *ngIf="error"  >Error..!Fill out the fields</span>
+
+         <!--       <span class="p-3 mb-2 text-success" [hidden]="false">Succesfully Added..!!</span> -->
+
+        </span> 
+    </form>
+    </div>
+        <div style="margin-bottom:40px;"></div>

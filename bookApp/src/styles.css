@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+.transition{
+  -webkit-transition: opacity 1000ms ease-in-out,margin-left 500ms ease-in-out;
+  -moz-transition: opacity 1000ms ease-in-out,margin-left 500ms ease-in-out;
+  -ms-transition: opacity 1000ms ease-in-out,margin-left 500ms ease-in-out ;
+  -o-transition: opacity 1000ms ease-in-out,margin-left 500ms ease-in-out;
+  transition: opacity 1000ms ease-in-out,margin-left 500ms ease-in-out;
+  margin-left: 1500px;
+  width: 200px;
+  opacity: 0;
+}
+
+.transition{
+  opacity: 100;
+  margin-left: 0;
+}
+
+.btn-secondary {
+  background-color: #784400;
+  border-color: #784400;
+}
+
+.btn-secondary:hover {
+  background-color: #a55d00;
+  border-color: #a55d00;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #784400;
+  border-color: #784400;
+}
+
+.border-secondary {
+  border-color: #784400!important;
+}

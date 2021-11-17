@@ -1,0 +1,16 @@
+
+<h1 class="display-6">Enter UserName Or Email to Filter</h1>
+<div class="input-group">
+    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+    aria-describedby="search-addon"  [(ngModel)]="toSearchTerm" />
+    <button type="button" (click)=handleSearch() class="btn btn-outline-primary">search</button>
+</div>
+
+<div  *ngIf="userFoundError" class="alert alert-danger alert-dismissible fade show">
+    <strong>Error! </strong>{{errorMessage}}
+    
+</div>
+
+
+<br>
+<br>
