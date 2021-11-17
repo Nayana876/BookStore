@@ -1,0 +1,122 @@
+﻿@model BookStoreMVC.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BDescri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BDescri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BPosition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BPosition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BImgFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BImgFile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BCondition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BCondition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BTags)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BTags)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BookId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

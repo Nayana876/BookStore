@@ -1,0 +1,19 @@
+1. Generating Controllers with Dependatant tables (primary key and foreign key) in odata config 
+2. Hpw to import tables into MODEL with table having Primary key (col1, col2) in both api and odata models
+3. Was not able to send an entity back to the front end becuase it was associated with other entities and had infinite self rederencing loops.
+   [SOLN] 
+	Well the correct answer for the default Json formater based on Json.net is to set ReferenceLoopHandling to Ignore.
+
+	Just add this to the Application_Start in Global.asax:
+
+		HttpConfiguration config = GlobalConfiguration.Configuration;
+
+		config.Formatters.JsonFormatter
+            	.SerializerSettings
+            	.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+	This is the correct way. It will ignore the reference pointing back to the object.
+
+	Other responses focused in changing the list being returned by excluding data or by making a facade object and sometimes that is not an option.
+
+	Using the JsonIgnore attribute to restrict the references can be time consuming and if you want to serialize the tree starting from another point that will be a problem.
+	Refer here : https://stackoverflow.com/questions/19467673/entity-framework-self-referencing-loop-detected

@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookStoreDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AId" />
+    </Key>
+    <Property Name="AId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UId" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Building" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phoneNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Pincode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__Address__UId__412EB0B6" FromRole="Address" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="Book">
+    <Key>
+      <PropertyRef Name="BookId" />
+    </Key>
+    <Property Name="BookId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CId" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ISBN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BookYear" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="BDescri" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BPosition" Type="Int32" />
+    <Property Name="BStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BImgFile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BCondition" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="BTags" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BRating" Type="Double" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Book__CId__4D94879B" FromRole="Book" ToRole="Category" />
+    <NavigationProperty Name="CartProducts" Relationship="Self.FK__CartProdu__BookI__5CD6CB2B" FromRole="Book" ToRole="CartProduct" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__BookId__75A278F5" FromRole="Book" ToRole="Review" />
+    <NavigationProperty Name="UserInfoes" Relationship="Self.Wishlist" FromRole="Book" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="BookSubmission">
+    <Key>
+      <PropertyRef Name="BSId" />
+    </Key>
+    <Property Name="BSId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UId" Type="Int32" />
+    <Property Name="ReviewStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Condition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__BookSubmiss__UId__03F0984C" FromRole="BookSubmission" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="CartId" />
+    </Key>
+    <Property Name="CartId" Type="Int32" Nullable="false" />
+    <Property Name="TotalPrice" Type="Double" />
+    <NavigationProperty Name="CartProducts" Relationship="Self.FK__CartProdu__CartI__5BE2A6F2" FromRole="Cart" ToRole="CartProduct" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Order__CartId__656C112C" FromRole="Cart" ToRole="Order" />
+    <NavigationProperty Name="UserInfoes" Relationship="Self.FK__UserInfo__CartId__398D8EEE" FromRole="Cart" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="CartProduct">
+    <Key>
+      <PropertyRef Name="CartId" />
+      <PropertyRef Name="BookId" />
+    </Key>
+    <Property Name="CartId" Type="Int32" Nullable="false" />
+    <Property Name="BookId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <NavigationProperty Name="Book" Relationship="Self.FK__CartProdu__BookI__5CD6CB2B" FromRole="CartProduct" ToRole="Book" />
+    <NavigationProperty Name="Cart" Relationship="Self.FK__CartProdu__CartI__5BE2A6F2" FromRole="CartProduct" ToRole="Cart" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BCount" Type="Int32" />
+    <Property Name="CDescri" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ImgFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CPosition" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Books" Relationship="Self.FK__Book__CId__4D94879B" FromRole="Category" ToRole="Book" />
+  </EntityType>
+  <EntityType Name="Coupon">
+    <Key>
+      <PropertyRef Name="CouponId" />
+    </Key>
+    <Property Name="CouponId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiscountPercentage" Type="Double" />
+    <Property Name="MaximumDiscount" Type="Double" />
+    <Property Name="MinimumOrderPrice" Type="Double" />
+    <Property Name="Expiry" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Order__Coupon__68487DD7" FromRole="Coupon" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="CartId" Type="Int32" />
+    <Property Name="OrderPrice" Type="Double" />
+    <Property Name="OrderDate" Type="DateTime" Precision="0" />
+    <Property Name="OrderStatus" Type="Int32" />
+    <Property Name="Coins" Type="Int32" />
+    <Property Name="Coupon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Cart" Relationship="Self.FK__Order__CartId__656C112C" FromRole="Order" ToRole="Cart" />
+    <NavigationProperty Name="Coupon1" Relationship="Self.FK__Order__Coupon__68487DD7" FromRole="Order" ToRole="Coupon" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__Order__UserId__6477ECF3" FromRole="Order" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="ReviewId" />
+    </Key>
+    <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="BookId" Type="Int32" Nullable="false" />
+    <Property Name="Review1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Rating" Type="Int32" />
+    <Property Name="SubmittedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Book" Relationship="Self.FK__Review__BookId__75A278F5" FromRole="Review" ToRole="Book" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__Review__UserId__74AE54BC" FromRole="Review" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="Testimonial">
+    <Key>
+      <PropertyRef Name="TestimonialId" />
+    </Key>
+    <Property Name="TestimonialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Review" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SubmittedAt" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__Testimoni__UserI__71D1E811" FromRole="Testimonial" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UId" />
+    </Key>
+    <Property Name="UId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CartId" Type="Int32" />
+    <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProfilePic" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Coins" Type="Int32" />
+    <NavigationProperty Name="Addresses" Relationship="Self.FK__Address__UId__412EB0B6" FromRole="UserInfo" ToRole="Address" />
+    <NavigationProperty Name="BookSubmissions" Relationship="Self.FK__BookSubmiss__UId__03F0984C" FromRole="UserInfo" ToRole="BookSubmission" />
+    <NavigationProperty Name="Cart" Relationship="Self.FK__UserInfo__CartId__398D8EEE" FromRole="UserInfo" ToRole="Cart" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Order__UserId__6477ECF3" FromRole="UserInfo" ToRole="Order" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK__Review__UserId__74AE54BC" FromRole="UserInfo" ToRole="Review" />
+    <NavigationProperty Name="Testimonials" Relationship="Self.FK__Testimoni__UserI__71D1E811" FromRole="UserInfo" ToRole="Testimonial" />
+    <NavigationProperty Name="Books" Relationship="Self.Wishlist" FromRole="UserInfo" ToRole="Book" />
+  </EntityType>
+  <Association Name="FK__Address__UId__412EB0B6">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UId" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="UId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Book__CId__4D94879B">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Book">
+        <PropertyRef Name="CId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CartProdu__BookI__5CD6CB2B">
+    <End Role="Book" Type="Self.Book" Multiplicity="1" />
+    <End Role="CartProduct" Type="Self.CartProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="BookId" />
+      </Principal>
+      <Dependent Role="CartProduct">
+        <PropertyRef Name="BookId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Review__BookId__75A278F5">
+    <End Role="Book" Type="Self.Book" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Book">
+        <PropertyRef Name="BookId" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="BookId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BookSubmiss__UId__03F0984C">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="BookSubmission" Type="Self.BookSubmission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UId" />
+      </Principal>
+      <Dependent Role="BookSubmission">
+        <PropertyRef Name="UId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CartProdu__CartI__5BE2A6F2">
+    <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
+    <End Role="CartProduct" Type="Self.CartProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="CartId" />
+      </Principal>
+      <Dependent Role="CartProduct">
+        <PropertyRef Name="CartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__CartId__656C112C">
+    <End Role="Cart" Type="Self.Cart" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="CartId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserInfo__CartId__398D8EEE">
+    <End Role="Cart" Type="Self.Cart" Multiplicity="0..1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="CartId" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="CartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__Coupon__68487DD7">
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Coupon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__UserId__6477ECF3">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Review__UserId__74AE54BC">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UId" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Testimoni__UserI__71D1E811">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="Testimonial" Type="Self.Testimonial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UId" />
+      </Principal>
+      <Dependent Role="Testimonial">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Wishlist">
+    <End Role="Book" Type="Self.Book" Multiplicity="*" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="BookStoreDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="Self.Address" />
+    <EntitySet Name="Books" EntityType="Self.Book" />
+    <EntitySet Name="BookSubmissions" EntityType="Self.BookSubmission" />
+    <EntitySet Name="Carts" EntityType="Self.Cart" />
+    <EntitySet Name="CartProducts" EntityType="Self.CartProduct" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Coupons" EntityType="Self.Coupon" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Reviews" EntityType="Self.Review" />
+    <EntitySet Name="Testimonials" EntityType="Self.Testimonial" />
+    <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
+    <AssociationSet Name="FK__Address__UId__412EB0B6" Association="Self.FK__Address__UId__412EB0B6">
+      <End Role="UserInfo" EntitySet="UserInfoes" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Book__CId__4D94879B" Association="Self.FK__Book__CId__4D94879B">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Book" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CartProdu__BookI__5CD6CB2B" Association="Self.FK__CartProdu__BookI__5CD6CB2B">
+      <End Role="Book" EntitySet="Books" />
+      <End Role="CartProduct" EntitySet="CartProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Review__BookId__75A278F5" Association="Self.FK__Review__BookId__75A278F5">
+      <End Role="Book" EntitySet="Books" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BookSubmiss__UId__03F0984C" Association="Self.FK__BookSubmiss__UId__03F0984C">
+      <End Role="UserInfo" EntitySet="UserInfoes" />
+      <End Role="BookSubmission" EntitySet="BookSubmissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CartProdu__CartI__5BE2A6F2" Association="Self.FK__CartProdu__CartI__5BE2A6F2">
+      <End Role="Cart" EntitySet="Carts" />
+      <End Role="CartProduct" EntitySet="CartProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__CartId__656C112C" Association="Self.FK__Order__CartId__656C112C">
+      <End Role="Cart" EntitySet="Carts" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserInfo__CartId__398D8EEE" Association="Self.FK__UserInfo__CartId__398D8EEE">
+      <End Role="Cart" EntitySet="Carts" />
+      <End Role="UserInfo" EntitySet="UserInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__Coupon__68487DD7" Association="Self.FK__Order__Coupon__68487DD7">
+      <End Role="Coupon" EntitySet="Coupons" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__UserId__6477ECF3" Association="Self.FK__Order__UserId__6477ECF3">
+      <End Role="UserInfo" EntitySet="UserInfoes" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Review__UserId__74AE54BC" Association="Self.FK__Review__UserId__74AE54BC">
+      <End Role="UserInfo" EntitySet="UserInfoes" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Testimoni__UserI__71D1E811" Association="Self.FK__Testimoni__UserI__71D1E811">
+      <End Role="UserInfo" EntitySet="UserInfoes" />
+      <End Role="Testimonial" EntitySet="Testimonials" />
+    </AssociationSet>
+    <AssociationSet Name="Wishlist" Association="Self.Wishlist">
+      <End Role="Book" EntitySet="Books" />
+      <End Role="UserInfo" EntitySet="UserInfoes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

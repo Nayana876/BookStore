@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a5e48c9636914b57961b6e16442e88af" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="BookStoreDbModel.Book" Width="1.5" PointX="3.125" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDbModel.BookSubmission" Width="1.5" PointX="0.875" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDbModel.Cart" Width="1.5" PointX="7.125" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDbModel.CartProduct" Width="1.5" PointX="7.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDbModel.Coupon" Width="1.5" PointX="11" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDbModel.Order" Width="1.5" PointX="9.125" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDbModel.Review" Width="1.5" PointX="1.125" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreDbModel.Wishlist" Width="1.5" PointX="5" PointY="17.25" IsExpanded="true" />
+        <AssociationConnector Association="BookStoreDbModel.FK__CartProdu__BookI__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreDbModel.FK__Review__BookId__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreDbModel.FK__Wishlist__BookId__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreDbModel.FK__CartProdu__CartI__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreDbModel.FK__Order__CartId__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreDbModel.FK__Order__Coupon__5441852A" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BookStoreDbModel.Address" Width="1.5" PointX="5.125" PointY="20.375" />
+        <AssociationConnector Association="BookStoreDbModel.FK__Order__AId__6477ECF3" />
+        <EntityTypeShape EntityType="BookStoreDbModel.UserInfo" Width="1.5" PointX="3.125" PointY="19.375" />
+        <AssociationConnector Association="BookStoreDbModel.FK__Address__UId__4316F928" />
+        <AssociationConnector Association="BookStoreDbModel.FK__BookSubmiss__UId__6C190EBB" />
+        <AssociationConnector Association="BookStoreDbModel.FK__UserInfo__CartId__3A81B327" />
+        <AssociationConnector Association="BookStoreDbModel.FK__Order__UserId__6477ECF3" />
+        <AssociationConnector Association="BookStoreDbModel.FK__Review__UserId__72C60C4A" />
+        <AssociationConnector Association="BookStoreDbModel.FK__Wishlist__UId__5BE2A6F2" />
+        <EntityTypeShape EntityType="BookStoreDbModel.Testimonial" Width="1.5" PointX="10.25" PointY="14.625" />
+        <EntityTypeShape EntityType="BookStoreDbModel.Category" Width="1.5" PointX="1.125" PointY="14.5" />
+        <AssociationConnector Association="BookStoreDbModel.FK__Book__CId__4F7CD00D" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
